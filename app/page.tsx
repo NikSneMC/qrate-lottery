@@ -38,12 +38,18 @@ export default function Home() {
         const prizeAmount = parseInt(amount);
 
         if (!Number.isInteger(minValue) || !Number.isInteger(maxValue) || !Number.isInteger(prizeAmount || minValue <= 0 || maxValue <= 0 || prizeAmount <= 0)) {
-            alert("Некорректный ввод: все числа должны быть натуральными.");
+            alert("Некорректный ввод: все числа должны быть натуральными!");
             return;
         }
 
         if (minValue >= maxValue) {
-            alert("Некорректный ввод: номер первого билета должен быть меньше, чем номер второго билета")
+            alert("Некорректный ввод: номер первого билета должен быть меньше, чем номер второго билета!");
+            return;
+        }
+
+        if (maxValue - minValue < prizeAmount) {
+            alert("Некорректный ввод: билетов меньше, чем призов!");
+            return;
         }
 
         window.location.href = `/results?minValue=${minValue}&maxValue=${maxValue}&amount=${prizeAmount}`;
